@@ -4,8 +4,39 @@ require './lib/plane.rb'
 describe 'an airport' do
   it 'can land a plane' do
     airport = Airport.new
-    expect(airport.land).to eq ["plane1"]
+    plane1 = "plane1"
+    expect(airport.land(plane1)).to eq ["plane1"]
   end
 
+  it 'can land plane 1 and plane 2' do
+    airport = Airport.new
+    airport.land("plane1")
+    plane2 = "plane2"
+    airport.land("plane2")
+    expect(airport.hangar).to eq ["plane1", "plane2"]
+  end
 
+  it 'can take off a plane' do
+    airport = Airport.new
+    plane1 = "plane1"
+    airport.land(plane1)
+    expect(airport.take_off(plane1)).to eq []
+  end
+
+  it 'can take off another plane' do
+    airport = Airport.new
+    plane1 = "plane1"
+    plane2 = "plane2"
+    airport.land(plane1)
+    airport.land(plane2)
+    expect(airport.take_off(plane2)).to eq [plane1]
+  end
+
+  it 'can not take off a plane when stormy' do
+    airport = Airport.new(true)
+    airport.land("plane1")
+    expect(airport.take_off("plane1")).to eq ["plane1"]
+  end
+
+  
 end

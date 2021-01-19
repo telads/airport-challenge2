@@ -5,6 +5,7 @@ I want to instruct a plane to land at an airport
 
 As an air traffic controller
 So I can get passengers on the way to their destination
+
 I want to instruct a plane to take off from an airport and confirm that it is no longer in the airport
 
 As an air traffic controller
@@ -32,3 +33,12 @@ User story 2
 airport.land
 [plane1]		->	[take_off]	->	[plane2]
 [plane2]		->	[take_off]	->	[ ]
+
+User story 3
+plane1			->	[take_off]	->	[plane1]
+
+User story 4
+airport.take_off("plane1") -> [land] -> []
+
+User story 5
+airport.take_off("plane1") -> [land] -> "airport full, cannot land"
