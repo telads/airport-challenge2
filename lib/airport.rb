@@ -29,5 +29,11 @@ class Airport
     end
   end
 
-
+    def override_capacity(capacity)
+      if capacity != @capacity
+        "capacity overridden"
+      else
+        @capacity = capacity
+      end
+    end
 end

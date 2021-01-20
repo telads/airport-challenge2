@@ -42,3 +42,6 @@ airport.take_off("plane1") -> [land] -> []
 
 User story 5
 airport.take_off("plane1") -> [land] -> "airport full, cannot land"
+
+User story 6
+50        -> [override_capacity]   -> "capacity overridden"
