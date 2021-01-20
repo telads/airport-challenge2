@@ -1,19 +1,22 @@
 class Airport
   attr_reader :hangar
-
+  CAPACITY = 10
 
   def initialize(hangar = [], stormy = false)
     @hangar = hangar
     @stormy = stormy
+    @capacity = CAPACITY
   end
 
 
   def land(plane)
     if @stormy
       @hangar
+    elsif @hangar.length > @capacity
+      "airport full, cannot land"
     else
       @hangar.push(plane)
-      @hangar
+      return @hangar
     end
   end
 
@@ -22,7 +25,7 @@ class Airport
       @hangar
     else
       @hangar.delete(plane)
-      @hangar
+      return @hangar
     end
   end
 

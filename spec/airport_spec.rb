@@ -45,6 +45,11 @@ describe 'an airport' do
     expect(airport.land(plane2)).to eq [plane1]
   end
 
-
+    it 'cannot land a plane when the airport is full' do
+      plane1 = "plane1"
+      airport = Airport.new
+      11.times { airport.land(plane1) }
+      expect(airport.land(plane1)).to eq "airport full, cannot land"
+    end
 
 end
