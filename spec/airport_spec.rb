@@ -33,10 +33,18 @@ describe 'an airport' do
   end
 
   it 'can not take off a plane when stormy' do
-    airport = Airport.new(true)
-    airport.land("plane1")
-    expect(airport.take_off("plane1")).to eq ["plane1"]
+    plane1 = "plane1"
+    airport = Airport.new([plane1], true)
+    expect(airport.take_off(plane1)).to eq [plane1]
   end
 
-  
+  it 'cannot land a plane when stormy' do
+    plane1 = "plane1"
+    plane2 = "plane2"
+    airport = Airport.new([plane1], true)
+    expect(airport.land(plane2)).to eq [plane1]
+  end
+
+
+
 end

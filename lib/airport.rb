@@ -2,14 +2,19 @@ class Airport
   attr_reader :hangar
 
 
-  def initialize(stormy = false)
-    @hangar = []
+  def initialize(hangar = [], stormy = false)
+    @hangar = hangar
     @stormy = stormy
   end
 
 
   def land(plane)
-    @hangar.push(plane)
+    if @stormy
+      @hangar
+    else
+      @hangar.push(plane)
+      @hangar
+    end
   end
 
   def take_off(plane)
