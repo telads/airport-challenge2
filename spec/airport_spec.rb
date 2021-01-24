@@ -53,8 +53,9 @@ describe 'an airport' do
     end
 
     it 'can override the system capacity' do
-      airport = Airport.new
-      expect(airport.override_capacity(50)).to eq "capacity overridden"
+      airport = Airport.new([], false, 0)
+      plane1 = "plane1"
+      expect(airport.land(plane1)).to eq "airport full, cannot land"
     end
 
 end

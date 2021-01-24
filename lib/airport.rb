@@ -1,18 +1,17 @@
 class Airport
   attr_reader :hangar
-  CAPACITY = 10
 
-  def initialize(hangar = [], stormy = false)
+  def initialize(hangar = [], stormy = false, capacity = 10)
     @hangar = hangar
     @stormy = stormy
-    @capacity = CAPACITY
+    @capacity = capacity
   end
 
 
   def land(plane)
     if @stormy
       @hangar
-    elsif @hangar.length > @capacity
+    elsif @hangar.length >= @capacity
       "airport full, cannot land"
     else
       @hangar.push(plane)
@@ -28,12 +27,5 @@ class Airport
       return @hangar
     end
   end
-
-    def override_capacity(capacity)
-      if capacity != @capacity
-        "capacity overridden"
-      else
-        @capacity = capacity
-      end
-    end
+  
 end
